@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>New Page</title>
+    <style>
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007BFF; /* Button background color */
+            color: #fff; /* Text color */
+            text-decoration: none; /* Remove underline for links */
+            border: none;
+            border-radius: 5px; /* Rounded corners */
+            cursor: pointer;
+        }
+
+        .button:hover {
+            background-color: #0056b3; /* Hover state color */
+        }
+    </style>
+</head>
+<body>
+<h2>Welcome to new page</h2>
+<!--<a href="{% url 'forms' %}">New form</a>-->
+<!--<button onclick="location.href='forms.html'">New Form</button>-->
+<a href="{% url 'forms' %}" class="button">New Form</a>
+</body>
+</html>

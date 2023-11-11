@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Forms</title>
+    <style>
+        /* Add your CSS styling here */
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .form-container {
+            width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        .dependent-dropdown {
+            display: none;
+        }
+
+        #confirmationMessage {
+            display: none;
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Fill the details below</h2>
+        <form id="myForm">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="dob">DOB:</label>
+            <input type="date" id="dob" name="dob" required>
+
+            <label for="age">Age:</label>
+            <input type="number" id="age" name="age" required>
+
+            <label for="gender">Gender:</label>
+            <input type="radio" id="male" name="gender" value="Male"> Male
+            <input type="radio" id="female" name="gender" value="Female"> Female
+
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" name="phone" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="address">Address:</label>
+            <textarea id="address" name="address" required></textarea>
+
+            <label for="department">Department:</label>
+            <select id="department" name="department" required>
+                <option value="">Select Department</option>
+                <option value="science">Science</option>
+                <option value="commerce">Commerce</option>
+                <option value="maths">Maths</option>
+                <option value="mechanical">Mechanical</option>
+                <option value="electrical">Electrical</option>
+            </select>
+
+            <label for="course">Courses:</label>
+            <select id="course" name="course" required>
+                <option value="">Select Department First</option>
+            </select>
+
+            <label for="purpose">Purpose:</label>
+            <select id="purpose" name="purpose" required>
+                <option value="">Select Purpose</option>
+                <option value="enquiry">For Enquiry</option>
+                <option value="order">Place Order</option>
+                <option value="return">Return</option>
+            </select>
+
+            <label>Materials Provided:</label><br>
+            <input type="checkbox" id="notebook" name="materials" value="Notebook"> Notebook
+            <input type="checkbox" id="pen" name="materials" value="Pen"> Pen
+            <input type="checkbox" id="examPapers" name="materials" value="Exam Papers"> Exam Papers
+            <br><br>
+            <button id="submitFormButton" type="button">Submit & Logout</button>
+        </form>
+
+        <div id="confirmationMessage">
+            <p>Order Confirmed!!</p>
+            <a href="/">Return to Home</a>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript to populate the course dropdown based on the selected department
+        const departmentSelect = document.getElementById('department');
+        const courseSelect = document.getElementById('course');
+
+        const departmentCourses = {
+            science: ["BTech", "MTech", "MCA", "BCA", "PhD"],
+            commerce: ["BBA", "MBA", "BCom", "MCom"],
+            maths: ["BSc", "MSc"],
+            mechanical: ["BTech", "MTech", "PhD", "Diploma"],
+            electrical: ["BTech", "MTech", "PhD", "Diploma"]
+        };
+
+        departmentSelect.addEventListener('change', function() {
+            const selectedDepartment = departmentSelect.value;
+            const courses = departmentCourses[selectedDepartment];
+
+            courseSelect.innerHTML = '<option value="">Select Course</option>';
+
+            if (courses) {
+                courses.forEach(course => {
+                    const option = document.createElement('option');
+                    option.value = course;
+                    option.textContent = course;
+                    courseSelect.appendChild(option);
+                });
+                courseSelect.style.display = 'block';
+            } else {
+                courseSelect.style.display = 'none';
+            }
+        });
+
+        // JavaScript to handle form submission and show confirmation
+        const submitFormButton = document.getElementById('submitFormButton');
+        const confirmationMessage = document.getElementById('confirmationMessage');
+
+        submitFormButton.addEventListener('click', function() {
+            // Form submission logic can be added here
+
+            // Show confirmation message and hide the form
+            document.getElementById('myForm').style.display = 'none';
+            confirmationMessage.style.display = 'block';
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Register</title>
+</head>
+<body>
+    <h2>REGISTERATION</h2>
+    <form action="{% url 'register' %}" method="post">
+        {% csrf_token %}
+        <label for="username">Username:</label>
+        <input type="text" name="username" required><br><br>
+        <label for="password">Password:</label>
+        <input type="password" name="password" required><br><br>
+        <label for="password">Confirm Password:</label>
+        <input type="password" name="password" required><br><br>
+        <input type="submit" value="Submit">
+<!--        <button type="submit">Register</button>-->
+    </form>
+<!--    <p>Already have an account? <a href="{% url 'login' %}">Login</a></p>-->
+</body>
+</html>
